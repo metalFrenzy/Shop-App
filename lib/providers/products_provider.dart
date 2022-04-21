@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
-import '../models/product.dart';
+import 'product.dart';
 
 class ProductsProv with ChangeNotifier {
   List<Product> _items = [
@@ -48,5 +48,9 @@ class ProductsProv with ChangeNotifier {
 
   List<Product> get items {
     return [..._items];
+  }
+
+  List<Product> get FavItems {
+    return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 }
