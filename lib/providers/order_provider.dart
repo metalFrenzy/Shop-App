@@ -26,10 +26,14 @@ class OrderProv with ChangeNotifier {
     return [..._orders];
   }
 
+  final String? authToken;
+  final String userId;
+
+  OrderProv(this.authToken, this.userId, this._orders);
+
   Future<void> fetchOrder() async {
-    var url = Uri.https(
-        'flutter-update-5c6c6-default-rtdb.europe-west1.firebasedatabase.app',
-        '/orders.json');
+    var url = Uri.parse(
+        'https://flutter-update-5c6c6-default-rtdb.europe-west1.firebasedatabase.app/orders/$userId.json?auth=$authToken');
     final response = await http.get(url);
     final List<Order> loadedOrders = [];
     final data = json.decode(response.body) as Map<String, dynamic>?;
@@ -62,9 +66,8 @@ class OrderProv with ChangeNotifier {
   }
 
   Future<void> addOrder(double total, List<Cart> cart) async {
-    var url = Uri.https(
-        'flutter-update-5c6c6-default-rtdb.europe-west1.firebasedatabase.app',
-        '/orders.json');
+    var url = Uri.parse(
+        'https://flutter-update-5c6c6-default-rtdb.europe-west1.firebasedatabase.app/orders/$userId.json?auth=$authToken');
     final timeStamp = DateTime.now();
     try {
       final res = await http.post(

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -42,6 +41,14 @@ class ProductsProv with ChangeNotifier {
     // ),
   ];
 
+  final String? authToken;
+  final String? userId;
+  ProductsProv(
+    this.authToken,
+    this.userId,
+    this._items,
+  );
+
   Product findById(String id) {
     return _items.firstWhere(
       (prod) => prod.id == id,
@@ -56,28 +63,32 @@ class ProductsProv with ChangeNotifier {
     return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
-  Future<void> fetchProduct() async {
-    var url = Uri.https(
-        'flutter-update-5c6c6-default-rtdb.europe-west1.firebasedatabase.app',
-        '/products.json');
+  Future<void> fetchProduct([bool filterByUser = false]) async {
+    final filterString =
+        filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
+    var url = Uri.parse(
+        'https://flutter-update-5c6c6-default-rtdb.europe-west1.firebasedatabase.app/products.json?auth=$authToken&$filterString');
     try {
       final response = await http.get(url);
       final data = json.decode(response.body) as Map<String, dynamic>?;
-      if (data == null) {
-        return;
-      }
-      final List<Product> loadedProducts = [];
-      data.forEach((key, value) {
-        loadedProducts.add(Product(
-          id: key,
-          title: value['title'],
-          description: value['description'],
-          price: value['price'],
-          imageUrl: value['imageUrl'],
-          isFavorite: value['isFavourite'],
-        ));
+      url = Uri.parse(
+          'https://flutter-update-5c6c6-default-rtdb.europe-west1.firebasedatabase.app/userFavorites/$userId.json?auth=$authToken');
+      final favRes = await http.get(url);
+      final favData = json.decode(favRes.body);
+      final List<Product> fetchedProducts = [];
+      data!.forEach((key, value) {
+        fetchedProducts.add(
+          Product(
+            id: key,
+            title: value['title'],
+            description: value['description'],
+            price: value['price'],
+            imageUrl: value['imageUrl'],
+            isFavorite: favData == null ? false : favData['key'] ?? false,
+          ),
+        );
       });
-      _items = loadedProducts;
+      _items = fetchedProducts;
       notifyListeners();
     } catch (error) {
       throw (error);
@@ -85,9 +96,8 @@ class ProductsProv with ChangeNotifier {
   }
 
   Future<void> addProduct(Product product) async {
-    var url = Uri.https(
-        'flutter-update-5c6c6-default-rtdb.europe-west1.firebasedatabase.app',
-        '/products.json');
+    var url = Uri.parse(
+        'https://flutter-update-5c6c6-default-rtdb.europe-west1.firebasedatabase.app/products.json?auth=$authToken');
     try {
       final response = await http.post(
         url,
@@ -96,7 +106,7 @@ class ProductsProv with ChangeNotifier {
           'description': product.description,
           'price': product.price,
           'imageUrl': product.imageUrl,
-          'isFavorite': product.isFavorite,
+          'creatorId': userId,
         }),
       );
       final newPorduct = Product(
@@ -116,9 +126,8 @@ class ProductsProv with ChangeNotifier {
 
   Future<void> updateProducts(String id, Product newProduct) async {
     final prodIndex = _items.indexWhere((prod) => prod.id == id);
-    var url = Uri.https(
-        'flutter-update-5c6c6-default-rtdb.europe-west1.firebasedatabase.app',
-        '/products/$id.json');
+    var url = Uri.parse(
+        'https://flutter-update-5c6c6-default-rtdb.europe-west1.firebasedatabase.app/products/$id.json?auth=$authToken');
     await http.patch(url,
         body: jsonEncode({
           'title': newProduct.title,
