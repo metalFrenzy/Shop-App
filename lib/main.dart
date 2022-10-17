@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           create: (ctx) => OrderProv('', '', []),
           update: (ctx, auth, previous) => OrderProv(
             auth.token,
-            auth.userId!,
+            auth.userId,
             previous == null ? [] : previous.orders,
           ),
         ),
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
           title: 'MyShop',
           theme: ThemeData(
             primarySwatch: Colors.red,
-            // accentColor: Colors.indigo,
+            accentColor: Colors.deepOrange,
             fontFamily: 'Lato',
             canvasColor: Colors.red[50],
           ),

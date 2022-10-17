@@ -27,7 +27,7 @@ class OrderProv with ChangeNotifier {
   }
 
   final String? authToken;
-  final String userId;
+  final String? userId;
 
   OrderProv(this.authToken, this.userId, this._orders);
 
