@@ -84,7 +84,7 @@ class ProductsProv with ChangeNotifier {
             description: value['description'],
             price: value['price'],
             imageUrl: value['imageUrl'],
-            isFavorite: favData == null ? false : favData['key'] ?? false,
+            isFavorite: favData == null ? false : favData[key] ?? false,
           ),
         );
       });

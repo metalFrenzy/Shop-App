@@ -16,31 +16,38 @@ class _OrderItemState extends State<OrderItem> {
   var _expanded = false;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(10),
-      child: Column(
-        children: [
-          ListTile(
-            title: Text('\$${widget.order.total}'),
-            subtitle: Text(
-              DateFormat('dd,MM,yyyy').format(widget.order.time),
-            ),
-            trailing: IconButton(
-              icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
-              onPressed: () {
-                setState(() {
-                  _expanded = !_expanded;
-                });
-              },
-            ),
-          ),
-          if (_expanded)
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 4 ),
-              height: min(
-                widget.order.products.length * 20.0 + 10,
-                100,
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 300),
+      height: _expanded
+          ? min(
+              widget.order.products.length * 20.0 + 150,
+              300,
+            )
+          : 100,
+      child: Card(
+        margin: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            ListTile(
+              title: Text('\$${widget.order.total.toStringAsFixed(2)}'),
+              subtitle: Text(
+                DateFormat('dd/MM/yyyy').format(widget.order.time),
               ),
+              trailing: IconButton(
+                icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
+                onPressed: () {
+                  setState(() {
+                    _expanded = !_expanded;
+                  });
+                },
+              ),
+            ),
+            AnimatedContainer(
+              height: _expanded
+                  ? min(widget.order.products.length * 20.0 + 10, 100)
+                  : 0,
+              duration: Duration(milliseconds: 300),
+              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
               child: ListView.builder(
                 itemBuilder: (ctx, i) {
                   return Row(
@@ -66,7 +73,8 @@ class _OrderItemState extends State<OrderItem> {
                 itemCount: widget.order.products.length,
               ),
             )
-        ],
+          ],
+        ),
       ),
     );
   }
