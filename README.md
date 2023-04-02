@@ -1,16 +1,19 @@
-# shop_app
+# Lonely Shop 
 
-A new Flutter project.
+It is a shop app that allows users to view products and them to the cart view their past orders and also mark them as favorites. 
 
-## Getting Started
+## Main Functionality of the App
 
-This project is a starting point for a Flutter application.
+* Users can view products and their details 
+* Users can mark a products as favorite 
+* Users can add products to the cart 
+* Users can view their orders that they have done 
+* Users can add their own products and manage them
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## How Did I develop the App? 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
+
