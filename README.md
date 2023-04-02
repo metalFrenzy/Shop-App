@@ -17,7 +17,7 @@ I have developed this app using flutter and used Firebase Real-time database and
 
 ## Animations that I have used
 
-
+I have used AnimatedContainer which helped me to automatically animate between the old and new values of properties when they change I have used it in the authentication form to add a nice transition between signing up and logging in. Moreover, I used the hero widget and the customScrollView combined with SliverList and SliverAppBar, for having nice animation between the appbar and the product image. and the hero widget provided me with a nice animation when navigating to the product detail screen.
 
 
 
