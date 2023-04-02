@@ -19,6 +19,21 @@ I have developed this app using flutter and used Firebase Real-time database and
 
 I have used AnimatedContainer which helped me to automatically animate between the old and new values of properties when they change I have used it in the authentication form to add a nice transition between signing up and logging in. Moreover, I used the hero widget and the customScrollView combined with SliverList and SliverAppBar, for having nice animation between the appbar and the product image. and the hero widget provided me with a nice animation when navigating to the product detail screen.
 
+## Screenshots from the App 
+
+![shopAuth](https://user-images.githubusercontent.com/70327788/229384556-b121c41a-3e67-4620-8a78-9cb7a79b8e33.png)
+
+![overview](https://user-images.githubusercontent.com/70327788/229384652-8c8f45b6-4185-492f-bfaa-b691ac286398.png)
+
+![shopDrawer](https://user-images.githubusercontent.com/70327788/229384632-e3589fa7-0401-48dd-a03f-365ef1729b58.png)
+
+![cart](https://user-images.githubusercontent.com/70327788/229384698-12119a56-76fe-4333-88af-be25a727f469.png)
+
+![orders](https://user-images.githubusercontent.com/70327788/229384717-0981e150-8f7d-4d85-a89c-ea30c8a8fa9a.png)
+
+
+![New Picture (1)](https://user-images.githubusercontent.com/70327788/229384733-64c56805-1290-4f5a-8b76-9add07805cbc.png)
+
 
 
 
