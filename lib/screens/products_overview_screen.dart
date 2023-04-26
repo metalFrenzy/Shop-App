@@ -72,7 +72,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
             ),
           ),
           Consumer<CartProv>(
-            builder: (_, cartObj, ch) => Badge(
+            builder: (_, cartObj, ch) => CartIcon(
               child: ch!,
               value: cartObj.itemCount.toString(),
               color: Theme.of(context).accentColor,

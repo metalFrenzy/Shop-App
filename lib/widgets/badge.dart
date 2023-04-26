@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 
-class Badge extends StatelessWidget {
-  const Badge({
-    Key? key,
-    required this.child,
-    required this.value,
-    required this.color,
-  }) : super(key: key);
+class CartIcon extends StatelessWidget {
+  final Widget? child;
+  final String? value;
+  final Color? color;
 
-  final Widget child;
-  final String value;
-  final Color color;
+  CartIcon({
+    this.child,
+    this.value,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        child,
+        child!,
         Positioned(
           right: 8,
           top: 8,
@@ -33,7 +32,7 @@ class Badge extends StatelessWidget {
               minHeight: 16,
             ),
             child: Text(
-              value,
+              value!,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 10,
