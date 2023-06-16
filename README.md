@@ -21,18 +21,16 @@ I have used AnimatedContainer which helped me to automatically animate between t
 
 ## Screenshots from the App 
 
-![shopAuth](https://user-images.githubusercontent.com/70327788/229384556-b121c41a-3e67-4620-8a78-9cb7a79b8e33.png)
+![slogin](https://github.com/metalFrenzy/Shop-App/assets/70327788/529d9937-b8a3-40f7-a379-3d193372f03b)
+![soverview](https://github.com/metalFrenzy/Shop-App/assets/70327788/29a9583e-8473-494a-b200-4686c8612245)
+![draw](https://github.com/metalFrenzy/Shop-App/assets/70327788/8dbda6da-5ed7-4c08-9431-6050618a2c4d)
 
-![overview](https://user-images.githubusercontent.com/70327788/229384652-8c8f45b6-4185-492f-bfaa-b691ac286398.png)
+![manage](https://github.com/metalFrenzy/Shop-App/assets/70327788/20ed9069-669b-430c-972b-57f67ce798d0)
+![edit](https://github.com/metalFrenzy/Shop-App/assets/70327788/8b218f81-2ebf-48ac-af34-091e89015d28)
 
-![shopDrawer](https://user-images.githubusercontent.com/70327788/229384632-e3589fa7-0401-48dd-a03f-365ef1729b58.png)
+![cart](https://github.com/metalFrenzy/Shop-App/assets/70327788/2d247ff2-24e3-4587-9542-927d80bcb261)
+![orders](https://github.com/metalFrenzy/Shop-App/assets/70327788/b15bbbfd-273b-443c-97c0-9b8f0121d2c4)
 
-![cart](https://user-images.githubusercontent.com/70327788/229384698-12119a56-76fe-4333-88af-be25a727f469.png)
-
-![orders](https://user-images.githubusercontent.com/70327788/229384717-0981e150-8f7d-4d85-a89c-ea30c8a8fa9a.png)
-
-
-![New Picture (1)](https://user-images.githubusercontent.com/70327788/229384733-64c56805-1290-4f5a-8b76-9add07805cbc.png)
 
 
 
